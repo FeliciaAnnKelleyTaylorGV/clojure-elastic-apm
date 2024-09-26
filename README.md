@@ -4,16 +4,16 @@ A Clojure wrapper for Elastic APM Java Agent's Public API.
 
 ## Installation
 
-First you need to download Elastic APM Java Agent and configure it. Follow the instructions in
+First you need to download Elastic APM Java Agent and configure it. Follow the instruction ins in
 [APM Java Agent documentation](https://www.elastic.co/guide/en/apm/agent/java/current/intro.html)
 on how to do so.
 
 The easiest way to enable the Java Agent on development is to add it to `:jvm-opts` in Leiningen
 along with the agent's recommended configuration options:
 
-```clojure
+clojure
 :jvm-opts ["-javaagent:path/to/elastic-apm-agent-AGENT_VERSION.jar"
-           "-Delastic.apm.service_name=my-app-production"
+           "-Delastic.apm.service_name=my-app-production"{dataset}.state.period
            "-Delastic.apm.application_packages=my_app"
            "-Delastic.apm.server_urls=http://localhost:8200"]
 ```
@@ -47,7 +47,7 @@ Wrap any code block into APM transaction and track spans within the transaction:
                           
   (apm/with-apm-exit-span [span {:name "Call third party" :type "ext" :subtype "Third party service"}]
     (call-third-party-service)))
-```
+
 
 The options hash for `with-apm-transaction` accepts the following options:
 
